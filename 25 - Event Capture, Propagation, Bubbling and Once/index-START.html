@@ -43,6 +43,12 @@
 <button></button>
 <script>
 
+function func (e) {
+  console.log(e);
+}
+
+  let divs = document.querySelectorAll('div');
+  divs.forEach(div => div.addEventlistener('click', func));
 </script>
 </body>
 </html>

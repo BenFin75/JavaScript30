@@ -59,6 +59,26 @@
 
 <script>
 
+let play = (e) => {
+  keyDisplay = document.querySelector(`div[data-key="${e.which}"`);
+  audio = document.querySelector(`audio[data-key="${e.which}"]`);
+  if(!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+  keyDisplay.classList.add('playing');
+};
+
+function removeTransition (e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+};
+
+const keys = document.querySelectorAll('.key');
+window.addEventListener('keydown', play);
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+
 </script>
 
 
